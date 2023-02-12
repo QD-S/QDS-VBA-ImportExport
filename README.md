@@ -5,6 +5,8 @@ A simple Office add-in for VBA code import and export.
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
 </p>
 
+[日本語](MD/README.jp.md)
+
 ## Set up
 
 Here we provide an Office add-in to import and export VBA code.
