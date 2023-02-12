@@ -29,7 +29,7 @@ QDS.VBA.ImportExport.xlam及びQDS.VBA.ImportExport.dotmは、それぞれエク
 
 1. VBAコードをインポートしたいオフィスファイルをアクティブにしてください。
 
-1. アドインのUtility_モジュールにあるOpenQdsVbaImportExportMainForm関数を実行して、MainFormを表示します。
+1. Excelの場合は「QDS.VBA.ImportExport.xlam」、Wordの場合は「QDS.VBA.ImportExport.dotm」を開くもしくは登録します。
 
 1. 「Import」ボタンを押してください。対象オフィスファイルと同じフォルダのVBAコードがインポートされます。Nameを選択し、ファイル名を入力することで、アクティブ以外のファイルを対象にすることができます。Wordの場合、アドインのリボンタブのみに表示されます。この場合、「Menu」より「QDS VBA Import/Export」を表示させ、該当のファイルをアクティブにして、メニューの「Import」ボタンを押してください。
 
@@ -37,7 +37,7 @@ QDS.VBA.ImportExport.xlam及びQDS.VBA.ImportExport.dotmは、それぞれエク
 
 1. VBAコードをエクスポートしたいオフィスファイルをアクティブにしてください。
 
-1. アドインのUtility_モジュールにあるOpenQdsVbaImportExportMainFormを実行して、MainFormを表示します。
+1. Excelの場合は「QDS.VBA.ImportExport.xlam」、Wordの場合は「QDS.VBA.ImportExport.dotm」を開くもしくは登録します。
 
 1. 「Export」ボタンを押してください。対象オフィスファイルと同じフォルダにVBAコードがエクスポートされます。Nameを選択し、ファイル名を入力することで、アクティブ以外のファイルを対象にすることができます。Wordの場合、アドインのリボンタブのみに表示されます。この場合、「Menu」より「QDS VBA Import/Export」を表示させ、該当のファイルをアクティブにして、メニューの「Export」ボタンを押してください。
 
