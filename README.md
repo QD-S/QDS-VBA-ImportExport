@@ -28,7 +28,7 @@ Open the add-in. Help is displayed as a tooltip.
 
 1. Activate the office file where you want to import the VBA code.
 
-1. Open or register the office Add-In.
+1. Open or register "QDS.VBA.ImportExport.xlam" for Excel or "QDS.VBA.ImportExport.dotm" for Word.
 
 1. Press the "Import" button on the "Add-ins" Ribbon tab. The VBA code will be imported into the same folder of the target office file. You can target non-active files by setting a file name in the Name text box. For Word, it only appears in the "Add-ins" Ribbon tab of the file. In this case, display "QDS VBA Import/Export" from "Menu", activate the target file, and press the "Import" button on the menu.
 
@@ -36,7 +36,7 @@ Open the add-in. Help is displayed as a tooltip.
 
 1. Activate the office file you want to export the VBA code.
 
-1. Open or register the office Add-In.
+1. Open or register "QDS.VBA.ImportExport.xlam" for Excel or "QDS.VBA.ImportExport.dotm" for Word.
 
 1. Press the "Export" button on the "Add-ins" Ribbon tab. The VBA code will be exported to the same folder of the target office file. You can target non-active files by setting a file name in the Name text box. For Word, it only appears in the "Add-ins" Ribbon tab of the file. In this case, display "QDS VBA Import/Export" from "Menu", activate the target file, and press the "Export" button on the menu.
 
