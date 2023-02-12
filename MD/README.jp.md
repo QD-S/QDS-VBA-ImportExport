@@ -2,7 +2,7 @@
 VBAコードのインポート・エクスポートを行う簡易オフィスアドイン
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/MainForm.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
 </p>
 
 ## セットアップ
@@ -11,8 +11,8 @@ VBAコードのインポート・エクスポートを行う簡易オフィス�
 QDS.VBA.ImportExport.xlam及びQDS.VBA.ImportExport.dotmは、それぞれエクセル及びワードのVBAコードのためのアドインです。これらはVBComponentを使用しています。そのため、使用するにはエクセル及びワードそれぞれの"トラストセンター"で下記のように「VBAプロジェクトオブジェクトモデルへのアクセスを信頼する」のチェックを有効にする必要があります。
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/ExcelTrustCenter.png">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/WordTrustCenter.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/ExcelTrustCenter.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/WordTrustCenter.png">
 </p>
 
 :warning: $\textcolor{red}{日本語}$で使用する場合は、一番下のCharset (コード)を参照し、DefaultCharsetを"Shift-JIS"に変更してください。 

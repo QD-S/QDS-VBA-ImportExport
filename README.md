@@ -2,7 +2,7 @@
 A simple Office add-in for VBA code import and export.
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/MainForm.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
 </p>
 
 ## Set up
@@ -11,8 +11,8 @@ Here we provide an Office add-in to import and export VBA code.
 QDS.VBA.ImportExport.xlam and QDS.VBA.ImportExport.dotm are add-ins for Excel and Word VBA code respectively. They use VBComponent to import and export code. Therefore, to use it, you have to enable the check of "Trust access to the VBA project object model" in the "Trust Center" of Excel and Word as shown below.
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/ExcelTrustCenter.png">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/WordTrustCenter.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/ExcelTrustCenter.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/WordTrustCenter.png">
 </p>
 
 ## How to use
@@ -21,7 +21,7 @@ Open the add-in. Help is displayed as a tooltip.
 
 ### Export
 
-1. Activate the office file you want to export the VBA code to.
+1. Activate the office file you want to export the VBA code.
 
 1. Run OpenQdsVbaImportExportMainForm in the add-in's Utility_ module to display the MainForm.
 
