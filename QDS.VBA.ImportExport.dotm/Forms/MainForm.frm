@@ -4,7 +4,7 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} MainForm
    ClientHeight    =   1830
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   8895
+   ClientWidth     =   7080
    OleObjectBlob   =   "MainForm.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
@@ -18,8 +18,8 @@ Option Explicit
 Private Declare PtrSafe Function GetSysColor Lib "user32" (ByVal hKey&) As Long
 
 Private Sub UserForm_Initialize()
-    HasTypeFolderCheckBox.Value = True
-    HasVbaFolderCheckBox.Value = True
+    HasTypeFolderCheckBox.Value = VbaUtility.HasTypeFolder
+    HasVbaFolderCheckBox.Value = VbaUtility.HasVbaFolder
     
     CodeTargetActiveWorkbookOptionButton.Value = True
     CodeTargetNameOptionButton_Change
@@ -29,13 +29,15 @@ End Sub
 
 Private Sub ImportCommandButton_Click()
 On Error GoTo ErrorHandle
-    If MsgBox("Do you import the VB component files?", vbYesNo, "Import") = vbYes Then
-        If CodeTargetAddInOptionButton.Value Then
-            VbaUtility.ImportFilesOfAddIn True
-        ElseIf CodeTargetActiveWorkbookOptionButton.Value Then
-            VbaUtility.ImportFiles , , HasTypeFolderCheckBox.Value, , CodeDirectoryFormat
+    If CodeTargetAddInOptionButton.Value Then
+        VbaUtility.ImportFilesOfAddIn True
+    ElseIf CodeTargetActiveWorkbookOptionButton.Value Then
+        VbaUtility.ImportFiles
+    Else
+        If InternalUtility.HasDocument(Documents, CodeTargetNameTextBox.Text) Then
+            VbaUtility.ImportFiles Documents(CodeTargetNameTextBox.Text)
         Else
-            VbaUtility.ImportFiles Documents(CodeTargetNameTextBox.Text), , HasTypeFolderCheckBox.Value, , CodeDirectoryFormat
+            MsgBox "'" + CodeTargetNameTextBox.Text + "' is not found.", , "Import"
         End If
     End If
     Exit Sub
@@ -48,23 +50,13 @@ On Error GoTo ErrorHandle
     If CodeTargetAddInOptionButton.Value Then
         VbaUtility.ExportFilesOfAddIn
     ElseIf CodeTargetActiveWorkbookOptionButton.Value Then
-        VbaUtility.ExportFiles , , HasTypeFolderCheckBox.Value, CodeDirectoryFormat
+        VbaUtility.ExportFiles
     Else
-        VbaUtility.ExportFiles Documents(CodeTargetNameTextBox.Text), , HasTypeFolderCheckBox.Value, CodeDirectoryFormat
-    End If
-    Exit Sub
-ErrorHandle:
-    ErrMsgBox
-End Sub
-
-Private Sub ArrangeCodeCommandButton_Click()
-On Error GoTo ErrorHandle
-    If CodeTargetAddInOptionButton.Value Then
-        VbaUtility.ArrangeCodeOfAddIn
-    ElseIf CodeTargetActiveWorkbookOptionButton.Value Then
-        VbaUtility.ArrangeCode
-    Else
-        VbaUtility.ArrangeCode Documents(CodeTargetNameTextBox.Text)
+        If InternalUtility.HasDocument(Documents, CodeTargetNameTextBox.Text) Then
+            VbaUtility.ExportFiles Documents(CodeTargetNameTextBox.Text)
+        Else
+            MsgBox "'" + CodeTargetNameTextBox.Text + "' is not found.", , "Export"
+        End If
     End If
     Exit Sub
 ErrorHandle:
@@ -83,11 +75,15 @@ Private Sub CodeTargetNameOptionButton_Change()
     End If
 End Sub
 
-'////////////////////////////////////////////////////Utility////////////////////////////////////////////////////
+Private Sub HasTypeFolderCheckBox_Change()
+    VbaUtility.HasTypeFolder = HasTypeFolderCheckBox.Value
+End Sub
 
-Private Property Get CodeDirectoryFormat()
-    If HasVbaFolderCheckBox.Value Then CodeDirectoryFormat = VbaUtility.FileNameFormatText + ".vba" Else CodeDirectoryFormat = ""
-End Property
+Private Sub HasVbaFolderCheckBox_Change()
+    VbaUtility.HasVbaFolder = HasVbaFolderCheckBox.Value
+End Sub
+
+'////////////////////////////////////////////////////Utility////////////////////////////////////////////////////
 
 Private Sub ErrMsgBox()
     MsgBox "Error number: " & Err.Number & " " & Err.Description

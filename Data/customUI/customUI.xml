@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <ribbon startFromScratch="false">
+      <tabs>
+      <tab idMso="TabAddIns">
+        <group id="QdsVbaImportExort" label="QDS VBA">
+          <button id="QdsVbaImportButton" label="Import" imageMso="ImportTextFile" size="large" onAction="QdsVbaImportActiveTargetOnRibbon" />
+          <button id="QdsVbaExportButton" label="Export" imageMso="ExportTextFile" size="large" onAction="QdsVbaExportActiveTargetOnRibbon" />
+          <button id="QdsVbaShowImportExportMainFormButton" label="Menu" imageMso="InsertNavigationButton" size="large" onAction="ShowQdsVbaImportExportMainFormOnRibbon" />
+        </group>
+      </tab>
+      </tabs>
+    </ribbon>
+</customUI>

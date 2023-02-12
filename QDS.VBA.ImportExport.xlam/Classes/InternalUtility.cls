@@ -28,3 +28,15 @@ End Function
 Function IsUpdateCodeTarget(Name$) As Boolean
     IsUpdateCodeTarget = Name = TargetObjectName Or ThisWorkbook.Worksheets.Count = 1
 End Function
+
+Function HasWorkbook(workbooks_ As Workbooks, ByVal Target$) As Boolean
+    Dim wb_ As Workbook
+    For Each wb_ In workbooks_
+        If wb_.Name = Target Then
+            HasWorkbook = True
+            Exit Function
+        End If
+    Next
+    HasWorkbook = False
+End Function
+

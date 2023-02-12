@@ -33,3 +33,14 @@ Function IsUpdateCodeTarget(Name$) As Boolean
     IsUpdateCodeTarget = Name = InternalUtility.TargetObjectName
 End Function
 
+Function HasDocument(documents_ As Documents, ByVal Target$) As Boolean
+    Dim doc_ As Document
+    For Each doc_ In documents_
+        If doc_.Name = Target Then
+            HasDocument = True
+            Exit Function
+        End If
+    Next
+    HasDocument = False
+End Function
+

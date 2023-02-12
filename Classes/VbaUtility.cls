@@ -26,9 +26,14 @@ Private Const NotSupportedErr# = 501
 Private outputExtensions()
 Private outputFolders()
 Private outputVBComponentTypes()
+
 Public FileNameFormatText
+Public HasTypeFolder As Boolean
+Public HasVbaFolder As Boolean
 
 Public Fso As Object
+
+'////////////////////////////////////////////////////Settings////////////////////////////////////////////////////
 
 Private Sub Class_Initialize()
     Set Fso = CreateObject("Scripting.FileSystemObject")
@@ -36,7 +41,13 @@ Private Sub Class_Initialize()
     outputFolders = Array("Modules", "Classes", "Forms", "Objects")
     outputVBComponentTypes = Array(vbext_ct_StdModule, vbext_ct_ClassModule, vbext_ct_MSForm, vbext_ct_Document)
     FileNameFormatText = "{FileName}"
+    HasTypeFolder = True
+    HasVbaFolder = True
 End Sub
+
+Private Property Get CodeDirectoryFormat()
+    If HasVbaFolder Then CodeDirectoryFormat = FileNameFormatText + ".vba" Else CodeDirectoryFormat = ""
+End Property
 
 '////////////////////////////////////////////////////VBComponent////////////////////////////////////////////////////
 
@@ -142,19 +153,24 @@ End Function
 '////////////////////////////////////////////////////Import////////////////////////////////////////////////////
 
 Sub ImportFilesOfAddIn(Optional ByVal DisableMenuFormOutput As Boolean = False)
-    ImportFiles InternalUtility.ThisAddIn, , True, DisableMenuFormOutput
+    ImportFiles InternalUtility.ThisAddIn, , True, DisableMenuFormOutput, ""
 End Sub
 
-Sub ImportFiles(Optional ByVal Target, Optional ByVal ImportPath$, Optional ByVal HasTypeFolders As Boolean, Optional DisableMenuFormOutput As Boolean = False, Optional ByVal DirectoryFormat$)
+Sub ImportFiles(Optional ByVal Target, Optional ByVal ImportPath$, Optional ByVal HasTypeFolders, Optional DisableMenuFormOutput As Boolean = False, Optional ByVal DirectoryFormat)
+    
+    If MsgBox("Do you import the VB component files?", vbYesNo, "Import") = vbNo Then Exit Sub
+    
     If IsMissing(Target) Then Set Target = InternalUtility.ActiveTarget
+    Dim HasTypeFolders_ As Boolean: If IsMissing(HasTypeFolders) Then HasTypeFolders_ = VbaUtility.HasTypeFolder Else HasTypeFolders_ = CBool(HasTypeFolders)
+    Dim DirectoryFormat_$: If IsMissing(DirectoryFormat) Then DirectoryFormat_ = CodeDirectoryFormat Else DirectoryFormat_ = CStr(DirectoryFormat)
     If ImportPath = "" Then ImportPath = Target.Path
-    If DirectoryFormat <> "" Then
-        Dim codeDirectory_$: codeDirectory_ = Replace(DirectoryFormat, FileNameFormatText, Target.Name)
+    If DirectoryFormat_ <> "" Then
+        Dim codeDirectory_$: codeDirectory_ = Replace(DirectoryFormat_, FileNameFormatText, Target.Name)
         If IsPathRooted(codeDirectory_) Then ImportPath = codeDirectory_ Else ImportPath = Combine(ImportPath, codeDirectory_)
     End If
     
     Dim Fso_ As Object: Set Fso_ = Fso
-    If HasTypeFolders Then
+    If HasTypeFolders_ Then
         Dim i&
         For i = LBound(outputFolders) To UBound(outputFolders)
             ImportFilesInternally Target, GetFiles(Combine(ImportPath, outputFolders(i))), DisableMenuFormOutput
@@ -268,15 +284,16 @@ End Function
 '////////////////////////////////////////////////////Export////////////////////////////////////////////////////
 
 Sub ExportFilesOfAddIn()
-    ExportFiles InternalUtility.ThisAddIn, , True
+    ExportFiles InternalUtility.ThisAddIn, , True, ""
 End Sub
 
-Sub ExportFiles(Optional ByVal Target, Optional ByVal ExportPath$, Optional ByVal HasTypeFolders As Boolean, Optional ByVal DirectoryFormat$)
-    
+Sub ExportFiles(Optional ByVal Target, Optional ByVal ExportPath$, Optional ByVal HasTypeFolders, Optional ByVal DirectoryFormat)
     If IsMissing(Target) Then Set Target = InternalUtility.ActiveTarget
+    Dim HasTypeFolders_ As Boolean: If IsMissing(HasTypeFolders) Then HasTypeFolders_ = VbaUtility.HasTypeFolder Else HasTypeFolders_ = CBool(HasTypeFolders)
+    Dim DirectoryFormat_$: If IsMissing(DirectoryFormat) Then DirectoryFormat_ = CodeDirectoryFormat Else DirectoryFormat_ = CStr(DirectoryFormat)
     If ExportPath = "" Then ExportPath = Target.Path
-    If DirectoryFormat <> "" Then
-        Dim codeDirectory_$: codeDirectory_ = Replace(DirectoryFormat, FileNameFormatText, Target.Name)
+    If DirectoryFormat_ <> "" Then
+        Dim codeDirectory_$: codeDirectory_ = Replace(DirectoryFormat_, FileNameFormatText, Target.Name)
         If IsPathRooted(codeDirectory_) Then ExportPath = codeDirectory_ Else ExportPath = Combine(ExportPath, codeDirectory_)
     End If
     
@@ -298,11 +315,11 @@ Sub ExportFiles(Optional ByVal Target, Optional ByVal ExportPath$, Optional ByVa
             Dim directoryPath_$: directoryPath_ = ExportPath
             Dim moduleExportDirectory$
             If TryGetExportDirectory(vbComponent_, moduleExportDirectory) Then directoryPath_ = Combine(directoryPath_, moduleExportDirectory)
-            If HasTypeFolders Then directoryPath_ = Combine(directoryPath_, outputFolders(index_))
+            If HasTypeFolders_ Then directoryPath_ = Combine(directoryPath_, outputFolders(index_))
             
             Dim componentName$: componentName = vbComponent_.Name
             Dim fileName_$: fileName_ = componentName & "." & outputExtensions(index_)
-            If HasTypeFolders Then
+            If HasTypeFolders_ Then
                 Dim underlineIndex&: underlineIndex = InStr(1, componentName, "_")
                 If underlineIndex > 0 And underlineIndex < Len(componentName) Then directoryPath_ = Combine(directoryPath_, Left(fileName_, underlineIndex - 1))
             End If
@@ -635,3 +652,5 @@ Function GetMax(ByVal Value1, ByVal Value2)
         GetMax = Value1
     End If
 End Function
+
+
