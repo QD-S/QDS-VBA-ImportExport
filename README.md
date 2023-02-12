@@ -4,8 +4,13 @@ A simple Office add-in for VBA code import and export.
 <p align="center">
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
 </p>
+
 <p align="center">
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/ExcelRibbon.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/WordRibbon.png">
 </p>
 
 [日本語](MD/README.jp.md)

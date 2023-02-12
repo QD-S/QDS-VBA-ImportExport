@@ -1,12 +1,18 @@
 # QDS VBA Code Import/Export Tool
 VBAコードのインポート・エクスポートを行う簡易オフィスアドイン
 
+　　　:warning: $\textcolor{red}{日本語}$で使用する場合は、一番下のCharset (コード)を参照し、DefaultCharsetを"Shift-JIS"に変更してください。 
+
 <p align="center">
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
 </p>
 
 <p align="center">
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/ExcelRibbon.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/WordRibbon.png">
 </p>
 
 ## セットアップ
@@ -18,8 +24,6 @@ QDS.VBA.ImportExport.xlam及びQDS.VBA.ImportExport.dotmは、それぞれエク
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/ExcelTrustCenter.png">
   <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/WordTrustCenter.png">
 </p>
-
-:warning: $\textcolor{red}{日本語}$で使用する場合は、一番下のCharset (コード)を参照し、DefaultCharsetを"Shift-JIS"に変更してください。 
 
 ## 使用方法
 
