@@ -2,7 +2,7 @@
 A simple Office add-in for VBA code import and export.
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MenuForm.png">
 </p>
 
 <p align="center">

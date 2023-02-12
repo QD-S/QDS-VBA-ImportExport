@@ -4,7 +4,7 @@ VBAコードのインポート・エクスポートを行う簡易オフィス�
 　　　:warning: $\textcolor{red}{日本語}$で使用する場合は、一番下のCharset (コード)を参照し、DefaultCharsetを"Shift-JIS"に変更してください。 
 
 <p align="center">
-  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MainForm.png">
+  <img src="https://github.com/QD-S/QDS-VBA-ImportExport/blob/main/MD/Images/MenuForm.png">
 </p>
 
 <p align="center">
