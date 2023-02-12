@@ -9,7 +9,6 @@ Public Const DefaultCharset$ = ""
 Public InternalUtility As New InternalUtility
 Public VbaUtility As New VbaUtility
 
-Sub OpenMenuForm()
+Sub OpenQdsVbaImportExportMainForm()
     MainForm.Show vbModeless
 End Sub
-

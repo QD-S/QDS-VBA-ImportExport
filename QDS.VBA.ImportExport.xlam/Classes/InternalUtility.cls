@@ -6,7 +6,7 @@ Attribute VB_Name = "InternalUtility"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = True
+Attribute VB_Exposed = False
 Option Explicit
 
 Public Property Get TargetObjectName() As String
@@ -28,4 +28,3 @@ End Function
 Function IsUpdateCodeTarget(Name$) As Boolean
     IsUpdateCodeTarget = Name = TargetObjectName Or ThisWorkbook.Worksheets.Count = 1
 End Function
-

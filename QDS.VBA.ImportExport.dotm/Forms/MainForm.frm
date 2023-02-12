@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} MainForm 
-   Caption         =   "UserForm1"
+   Caption         =   "QDS VBA Import/Export"
    ClientHeight    =   1830
    ClientLeft      =   120
    ClientTop       =   465
